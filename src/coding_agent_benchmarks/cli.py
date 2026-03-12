@@ -7,7 +7,7 @@ import textwrap
 from pathlib import Path
 from typing import Sequence
 
-from .agents.scripted import FixtureSolverAgent, NoOpAgent
+from .agents import registry
 from .runner import BenchmarkRunner
 from .tasks import ManifestError, TaskRepository, VALID_CATEGORIES, VALID_DIFFICULTIES
 
@@ -82,7 +82,7 @@ def handle_run(args: argparse.Namespace) -> int:
     repository = TaskRepository()
     runner = BenchmarkRunner(task_repository=repository)
     task = repository.get_task(args.task_id)
-    agent = resolve_agent(args.agent)
+    agent = registry.build(args.agent)
     result = runner.run_task(task, agent)
     print(json.dumps(result.to_dict(), indent=2))
     return 0 if result.success else 1
@@ -91,7 +91,7 @@ def handle_run(args: argparse.Namespace) -> int:
 def handle_eval(args: argparse.Namespace) -> int:
     repository = TaskRepository()
     runner = BenchmarkRunner(task_repository=repository)
-    agent = resolve_agent(args.agent)
+    agent = registry.build(args.agent)
     report = runner.run_suite(args.suite, agent)
     output_path = Path(args.output)
     output_path.parent.mkdir(parents=True, exist_ok=True)
@@ -150,14 +150,6 @@ def handle_new_task(args: argparse.Namespace) -> int:
     print(f"  Add starter files to {workspace_dir}/")
     print(f"  Add solution edits to {task_dir / 'solution.json'}")
     return 0
-
-
-def resolve_agent(agent_id: str):
-    if agent_id == FixtureSolverAgent.agent_id:
-        return FixtureSolverAgent()
-    if agent_id == NoOpAgent.agent_id:
-        return NoOpAgent()
-    raise KeyError(f"Unknown agent: {agent_id!r} — available: fixture-solver, noop")
 
 
 if __name__ == "__main__":
