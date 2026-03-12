@@ -42,6 +42,21 @@ class TaskRunResult:
         return payload
 
 
+def _group_stats(results: list[TaskRunResult], key: str) -> dict[str, dict[str, object]]:
+    """Return pass/total counts grouped by an attribute of TaskRunResult."""
+    groups: dict[str, list[TaskRunResult]] = {}
+    for r in results:
+        groups.setdefault(getattr(r, key), []).append(r)
+    return {
+        group: {
+            "total": len(items),
+            "passed": sum(1 for i in items if i.success),
+            "pass_rate": round(sum(1 for i in items if i.success) / len(items), 4),
+        }
+        for group, items in sorted(groups.items())
+    }
+
+
 @dataclass(frozen=True)
 class SuiteRunResult:
     suite: str
@@ -51,6 +66,8 @@ class SuiteRunResult:
     average_score: float
     duration_seconds: float
     results: list[TaskRunResult]
+    by_category: dict[str, dict[str, object]]
+    by_difficulty: dict[str, dict[str, object]]
 
     def to_dict(self) -> dict[str, object]:
         return {
@@ -60,11 +77,38 @@ class SuiteRunResult:
             "passed_tasks": self.passed_tasks,
             "average_score": self.average_score,
             "duration_seconds": self.duration_seconds,
+            "by_category": self.by_category,
+            "by_difficulty": self.by_difficulty,
             "results": [result.to_dict() for result in self.results],
         }
 
     def to_json(self) -> str:
         return json.dumps(self.to_dict(), indent=2)
+
+    def summary_lines(self) -> list[str]:
+        """Return a compact human-readable summary."""
+        lines = [
+            f"Suite:  {self.suite}",
+            f"Agent:  {self.agent_id}",
+            f"Result: {self.passed_tasks}/{self.total_tasks} passed"
+            f"  ({self.average_score * 100:.0f}%)"
+            f"  in {self.duration_seconds:.1f}s",
+            "",
+            "By category:",
+        ]
+        for cat, stats in self.by_category.items():
+            lines.append(
+                f"  {cat:<25} {stats['passed']}/{stats['total']}"
+                f"  ({stats['pass_rate'] * 100:.0f}%)"
+            )
+        lines.append("")
+        lines.append("By difficulty:")
+        for diff, stats in self.by_difficulty.items():
+            lines.append(
+                f"  {diff:<25} {stats['passed']}/{stats['total']}"
+                f"  ({stats['pass_rate'] * 100:.0f}%)"
+            )
+        return lines
 
 
 class BenchmarkRunner:
@@ -113,6 +157,8 @@ class BenchmarkRunner:
             average_score=average,
             duration_seconds=round(duration, 4),
             results=results,
+            by_category=_group_stats(results, "category"),
+            by_difficulty=_group_stats(results, "difficulty"),
         )
 
     @staticmethod

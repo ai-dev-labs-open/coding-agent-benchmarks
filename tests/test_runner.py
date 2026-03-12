@@ -54,6 +54,32 @@ def test_suite_report_serialization_contains_results() -> None:
     assert payload["suite"] == "core-python"
     assert payload["passed_tasks"] == 8
     assert len(payload["results"]) == 8
+    assert "by_category" in payload
+    assert "by_difficulty" in payload
+
+
+def test_suite_report_summary_lines() -> None:
+    repository = TaskRepository()
+    runner = BenchmarkRunner(task_repository=repository)
+
+    report = runner.run_suite("core-python", FixtureSolverAgent())
+    lines = report.summary_lines()
+
+    assert any("core-python" in line for line in lines)
+    assert any("By category:" in line for line in lines)
+    assert any("By difficulty:" in line for line in lines)
+
+
+def test_suite_report_by_category_and_difficulty() -> None:
+    repository = TaskRepository()
+    runner = BenchmarkRunner(task_repository=repository)
+
+    report = runner.run_suite("core-python", FixtureSolverAgent())
+
+    for stats in report.by_category.values():
+        assert stats["passed"] == stats["total"]
+    for stats in report.by_difficulty.values():
+        assert stats["passed"] == stats["total"]
 
 
 def test_validation_timeout_is_recorded(tmp_path: Path) -> None:
