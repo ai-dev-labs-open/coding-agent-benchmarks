@@ -15,6 +15,7 @@ Many coding benchmarks emphasize isolated algorithm problems. Those are useful, 
 - Deterministic scoring based on validation results and execution metadata.
 - 12 Python repo-style tasks in the `core-python` suite across four categories and three difficulty levels.
 - Scripted agents (`fixture-solver`, `noop`) for local smoke tests and CI.
+- Live `claude-api` agent backed by `claude-opus-4-6` with an agentic tool-use loop.
 - Per-category and per-difficulty summary stats in both the JSON report and the CLI output.
 - `bench new-task` scaffold command for authoring new tasks safely.
 
@@ -111,6 +112,24 @@ Each task manifest (`task.json`) defines:
 
 See [`docs/authoring-tasks.md`](docs/authoring-tasks.md) for a full guide on writing new tasks.
 
+## Using the Claude API Agent
+
+A live `claude-api` agent is included. It calls `claude-opus-4-6` with a `write_file` tool to express file edits as structured tool calls, then runs the agentic loop until the model stops.
+
+Install with the `anthropic` extra:
+
+```bash
+pip install "coding-agent-benchmarks[anthropic]"
+```
+
+Set your API key and run:
+
+```bash
+export ANTHROPIC_API_KEY=sk-ant-...
+bench run py_bugfix_discount --agent claude-api
+bench eval --suite core-python --agent claude-api --output report.json
+```
+
 ## Adding a Custom Agent
 
 Implement the `Agent` protocol (a class with `agent_id: str` and `solve(context) -> AgentResult`) and register it:
@@ -139,7 +158,7 @@ bench run py_bugfix_discount --agent my-agent
 2. ~~Improve reporting (per-category/difficulty stats, human-readable summary).~~
 3. ~~Improve task ergonomics (manifest validation, scaffold command, authoring guide).~~
 4. ~~Agent registry/factory pattern.~~
-5. Add pluggable provider integrations (live model agents).
+5. ~~Add pluggable provider integrations (live model agents).~~
 6. Expand to TypeScript and issue-to-PR style tasks.
 
 ## Contributing

@@ -16,6 +16,8 @@ dependencies = []
 
 [project.optional-dependencies]
 dev = ["pytest>=8.0"]
+anthropic = ["anthropic>=0.40"]
+all = ["anthropic>=0.40", "pytest>=8.0"]
 
 [project.scripts]
 bench = "coding_agent_benchmarks.cli:main"
