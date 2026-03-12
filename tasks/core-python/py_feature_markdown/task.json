@@ -1,0 +1,11 @@
+{
+  "id": "py_feature_markdown",
+  "title": "Render bullet lists as Markdown",
+  "category": "feature",
+  "difficulty": "medium",
+  "instruction": "Add a function that converts a list of strings into a Markdown bullet list, one item per line.",
+  "workspace": "workspace",
+  "validation_command": ["pytest", "-q"],
+  "timeout_seconds": 10,
+  "suite": "core-python"
+}

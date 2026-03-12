@@ -1,0 +1,9 @@
+{
+  "notes": "Adds the requested low-stock helper.",
+  "edits": [
+    {
+      "path": "inventory.py",
+      "content": "def total_quantity(items: list[dict[str, int]]) -> int:\n    return sum(item[\"quantity\"] for item in items)\n\n\ndef low_stock_items(items: list[dict[str, int]], threshold: int) -> list[str]:\n    names = [item[\"name\"] for item in items if item[\"quantity\"] < threshold]\n    return sorted(names)\n"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "id": "py_refactor_shipping",
+  "title": "Refactor shipping labels to reuse a helper",
+  "category": "refactor",
+  "difficulty": "medium",
+  "instruction": "Refactor the shipping label builder so both public functions rely on a shared format_address helper.",
+  "workspace": "workspace",
+  "validation_command": ["pytest", "-q"],
+  "timeout_seconds": 10,
+  "suite": "core-python"
+}

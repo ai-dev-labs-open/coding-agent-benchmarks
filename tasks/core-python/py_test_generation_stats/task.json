@@ -1,0 +1,11 @@
+{
+  "id": "py_test_generation_stats",
+  "title": "Add regression tests for statistics helpers",
+  "category": "test_generation",
+  "difficulty": "easy",
+  "instruction": "Replace the placeholder tests with real coverage for the mean and median helpers.",
+  "workspace": "workspace",
+  "validation_command": ["pytest", "-q"],
+  "timeout_seconds": 10,
+  "suite": "core-python"
+}

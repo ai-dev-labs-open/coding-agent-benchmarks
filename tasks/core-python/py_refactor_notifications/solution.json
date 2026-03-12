@@ -1,0 +1,9 @@
+{
+  "notes": "Moves duplicated formatting into make_message.",
+  "edits": [
+    {
+      "path": "notifications.py",
+      "content": "def make_message(name: str, action: str) -> str:\n    return f\"Hello {name}, {action}.\"\n\n\ndef welcome_message(name: str) -> str:\n    return make_message(name, \"welcome aboard\")\n\n\ndef reminder_message(name: str) -> str:\n    return make_message(name, \"please verify your email\")\n"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "id": "py_feature_inventory",
+  "title": "Add low stock reporting",
+  "category": "feature",
+  "difficulty": "medium",
+  "instruction": "Implement a helper that returns item names whose quantity is below the given threshold, sorted alphabetically.",
+  "workspace": "workspace",
+  "validation_command": ["pytest", "-q"],
+  "timeout_seconds": 10,
+  "suite": "core-python"
+}

@@ -1,0 +1,9 @@
+{
+  "notes": "Normalizes repeated spaces and trims separators.",
+  "edits": [
+    {
+      "path": "slugify.py",
+      "content": "def slugify(text: str) -> str:\n    pieces = text.lower().split()\n    return \"-\".join(pieces)\n"
+    }
+  ]
+}

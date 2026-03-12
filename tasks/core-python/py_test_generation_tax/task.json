@@ -1,0 +1,11 @@
+{
+  "id": "py_test_generation_tax",
+  "title": "Add tests for tax calculations",
+  "category": "test_generation",
+  "difficulty": "easy",
+  "instruction": "Write tests that verify the tax helper for zero, fractional, and rounded totals.",
+  "workspace": "workspace",
+  "validation_command": ["pytest", "-q"],
+  "timeout_seconds": 10,
+  "suite": "core-python"
+}

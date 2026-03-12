@@ -1,0 +1,11 @@
+{
+  "id": "py_refactor_notifications",
+  "title": "Refactor notification messages into a shared helper",
+  "category": "refactor",
+  "difficulty": "medium",
+  "instruction": "Extract the repeated greeting logic into a make_message helper and keep the existing outputs unchanged.",
+  "workspace": "workspace",
+  "validation_command": ["pytest", "-q"],
+  "timeout_seconds": 10,
+  "suite": "core-python"
+}

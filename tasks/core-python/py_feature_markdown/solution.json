@@ -1,0 +1,9 @@
+{
+  "notes": "Adds Markdown bullet list rendering.",
+  "edits": [
+    {
+      "path": "markdown_utils.py",
+      "content": "def heading(text: str, level: int = 1) -> str:\n    return f\"{'#' * level} {text}\"\n\n\ndef bullet_list(items: list[str]) -> str:\n    return \"\\n\".join(f\"- {item}\" for item in items)\n"
+    }
+  ]
+}

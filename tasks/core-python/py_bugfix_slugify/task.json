@@ -1,0 +1,11 @@
+{
+  "id": "py_bugfix_slugify",
+  "title": "Strip repeated separators from slugs",
+  "category": "bugfix",
+  "difficulty": "easy",
+  "instruction": "Fix the slugify helper so it collapses repeated whitespace into a single dash and trims leading or trailing dashes.",
+  "workspace": "workspace",
+  "validation_command": ["pytest", "-q"],
+  "timeout_seconds": 10,
+  "suite": "core-python"
+}

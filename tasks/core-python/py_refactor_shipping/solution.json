@@ -1,0 +1,9 @@
+{
+  "notes": "Extracts address formatting into a single helper.",
+  "edits": [
+    {
+      "path": "shipping.py",
+      "content": "def format_address(name: str, city: str) -> str:\n    return f\"{name}\\n{city}\"\n\n\ndef shipping_label(name: str, city: str) -> str:\n    return format_address(name, city)\n\n\ndef express_label(name: str, city: str) -> str:\n    return format_address(name, city) + \"\\nEXPRESS\"\n"
+    }
+  ]
+}

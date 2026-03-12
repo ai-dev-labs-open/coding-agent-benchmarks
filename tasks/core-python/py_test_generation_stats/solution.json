@@ -1,0 +1,9 @@
+{
+  "notes": "Replaces placeholder assertions with real regression tests.",
+  "edits": [
+    {
+      "path": "test_stats_helpers.py",
+      "content": "from stats_helpers import mean, median\n\n\ndef test_mean() -> None:\n    assert mean([2, 4, 6]) == 4\n\n\ndef test_median_odd_length() -> None:\n    assert median([9, 1, 5]) == 5\n\n\ndef test_median_even_length() -> None:\n    assert median([10, 2, 4, 8]) == 6.0\n"
+    }
+  ]
+}

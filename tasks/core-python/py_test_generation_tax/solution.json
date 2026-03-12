@@ -1,0 +1,9 @@
+{
+  "notes": "Adds focused tax helper tests.",
+  "edits": [
+    {
+      "path": "test_tax.py",
+      "content": "from tax import add_tax\n\n\ndef test_zero_amount() -> None:\n    assert add_tax(0, rate=0.2) == 0.0\n\n\ndef test_fractional_tax_rounding() -> None:\n    assert add_tax(19.99, rate=0.08) == 21.59\n\n\ndef test_default_rate() -> None:\n    assert add_tax(10) == 11.0\n"
+    }
+  ]
+}

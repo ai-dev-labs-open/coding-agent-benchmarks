@@ -1,0 +1,11 @@
+{
+  "id": "py_bugfix_discount",
+  "title": "Fix discount threshold logic",
+  "category": "bugfix",
+  "difficulty": "easy",
+  "instruction": "Update the order total calculation so purchases of 100 or more receive a 10 percent discount.",
+  "workspace": "workspace",
+  "validation_command": ["pytest", "-q"],
+  "timeout_seconds": 10,
+  "suite": "core-python"
+}
