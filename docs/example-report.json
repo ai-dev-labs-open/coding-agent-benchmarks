@@ -1,0 +1,325 @@
+{
+  "suite": "core-python",
+  "agent_id": "fixture-solver",
+  "total_tasks": 12,
+  "passed_tasks": 12,
+  "average_score": 1.0,
+  "duration_seconds": 2.358,
+  "by_category": {
+    "bugfix": {
+      "total": 3,
+      "passed": 3,
+      "pass_rate": 1.0
+    },
+    "feature": {
+      "total": 3,
+      "passed": 3,
+      "pass_rate": 1.0
+    },
+    "refactor": {
+      "total": 3,
+      "passed": 3,
+      "pass_rate": 1.0
+    },
+    "test_generation": {
+      "total": 3,
+      "passed": 3,
+      "pass_rate": 1.0
+    }
+  },
+  "by_difficulty": {
+    "easy": {
+      "total": 4,
+      "passed": 4,
+      "pass_rate": 1.0
+    },
+    "hard": {
+      "total": 2,
+      "passed": 2,
+      "pass_rate": 1.0
+    },
+    "medium": {
+      "total": 6,
+      "passed": 6,
+      "pass_rate": 1.0
+    }
+  },
+  "results": [
+    {
+      "task_id": "py_bugfix_csv_parser",
+      "suite": "core-python",
+      "agent_id": "fixture-solver",
+      "success": true,
+      "score": 1.0,
+      "category": "bugfix",
+      "difficulty": "medium",
+      "duration_seconds": 0.1991,
+      "edit_count": 1,
+      "notes": "Replace naive split with a proper quoted-field-aware parser using the csv module.",
+      "validation": {
+        "command": [
+          "pytest",
+          "-q"
+        ],
+        "returncode": 0,
+        "stdout": ".....                                                                    [100%]\n5 passed in 0.01s\n",
+        "stderr": "",
+        "timed_out": false,
+        "duration_seconds": 0.1979
+      }
+    },
+    {
+      "task_id": "py_bugfix_discount",
+      "suite": "core-python",
+      "agent_id": "fixture-solver",
+      "success": true,
+      "score": 1.0,
+      "category": "bugfix",
+      "difficulty": "easy",
+      "duration_seconds": 0.1919,
+      "edit_count": 1,
+      "notes": "Fixes the inclusive discount threshold.",
+      "validation": {
+        "command": [
+          "pytest",
+          "-q"
+        ],
+        "returncode": 0,
+        "stdout": "...                                                                      [100%]\n3 passed in 0.01s\n",
+        "stderr": "",
+        "timed_out": false,
+        "duration_seconds": 0.1911
+      }
+    },
+    {
+      "task_id": "py_bugfix_slugify",
+      "suite": "core-python",
+      "agent_id": "fixture-solver",
+      "success": true,
+      "score": 1.0,
+      "category": "bugfix",
+      "difficulty": "easy",
+      "duration_seconds": 0.1902,
+      "edit_count": 1,
+      "notes": "Normalizes repeated spaces and trims separators.",
+      "validation": {
+        "command": [
+          "pytest",
+          "-q"
+        ],
+        "returncode": 0,
+        "stdout": "..                                                                       [100%]\n2 passed in 0.01s\n",
+        "stderr": "",
+        "timed_out": false,
+        "duration_seconds": 0.1894
+      }
+    },
+    {
+      "task_id": "py_feature_inventory",
+      "suite": "core-python",
+      "agent_id": "fixture-solver",
+      "success": true,
+      "score": 1.0,
+      "category": "feature",
+      "difficulty": "medium",
+      "duration_seconds": 0.1929,
+      "edit_count": 1,
+      "notes": "Adds the requested low-stock helper.",
+      "validation": {
+        "command": [
+          "pytest",
+          "-q"
+        ],
+        "returncode": 0,
+        "stdout": "..                                                                       [100%]\n2 passed in 0.01s\n",
+        "stderr": "",
+        "timed_out": false,
+        "duration_seconds": 0.192
+      }
+    },
+    {
+      "task_id": "py_feature_markdown",
+      "suite": "core-python",
+      "agent_id": "fixture-solver",
+      "success": true,
+      "score": 1.0,
+      "category": "feature",
+      "difficulty": "medium",
+      "duration_seconds": 0.1923,
+      "edit_count": 1,
+      "notes": "Adds Markdown bullet list rendering.",
+      "validation": {
+        "command": [
+          "pytest",
+          "-q"
+        ],
+        "returncode": 0,
+        "stdout": "..                                                                       [100%]\n2 passed in 0.01s\n",
+        "stderr": "",
+        "timed_out": false,
+        "duration_seconds": 0.1914
+      }
+    },
+    {
+      "task_id": "py_feature_pagination",
+      "suite": "core-python",
+      "agent_id": "fixture-solver",
+      "success": true,
+      "score": 1.0,
+      "category": "feature",
+      "difficulty": "medium",
+      "duration_seconds": 0.1979,
+      "edit_count": 1,
+      "notes": "Adds paginate() to results.py with validation and correct slice logic.",
+      "validation": {
+        "command": [
+          "pytest",
+          "-q"
+        ],
+        "returncode": 0,
+        "stdout": ".......                                                                  [100%]\n7 passed in 0.01s\n",
+        "stderr": "",
+        "timed_out": false,
+        "duration_seconds": 0.197
+      }
+    },
+    {
+      "task_id": "py_refactor_cache",
+      "suite": "core-python",
+      "agent_id": "fixture-solver",
+      "success": true,
+      "score": 1.0,
+      "category": "refactor",
+      "difficulty": "hard",
+      "duration_seconds": 0.204,
+      "edit_count": 3,
+      "notes": "Introduces cache.py with TtlCache and rewrites both services to use it.",
+      "validation": {
+        "command": [
+          "pytest",
+          "-q"
+        ],
+        "returncode": 0,
+        "stdout": ".......                                                                  [100%]\n7 passed in 0.01s\n",
+        "stderr": "",
+        "timed_out": false,
+        "duration_seconds": 0.2029
+      }
+    },
+    {
+      "task_id": "py_refactor_notifications",
+      "suite": "core-python",
+      "agent_id": "fixture-solver",
+      "success": true,
+      "score": 1.0,
+      "category": "refactor",
+      "difficulty": "medium",
+      "duration_seconds": 0.197,
+      "edit_count": 1,
+      "notes": "Moves duplicated formatting into make_message.",
+      "validation": {
+        "command": [
+          "pytest",
+          "-q"
+        ],
+        "returncode": 0,
+        "stdout": "...                                                                      [100%]\n3 passed in 0.01s\n",
+        "stderr": "",
+        "timed_out": false,
+        "duration_seconds": 0.1961
+      }
+    },
+    {
+      "task_id": "py_refactor_shipping",
+      "suite": "core-python",
+      "agent_id": "fixture-solver",
+      "success": true,
+      "score": 1.0,
+      "category": "refactor",
+      "difficulty": "medium",
+      "duration_seconds": 0.1925,
+      "edit_count": 1,
+      "notes": "Extracts address formatting into a single helper.",
+      "validation": {
+        "command": [
+          "pytest",
+          "-q"
+        ],
+        "returncode": 0,
+        "stdout": "...                                                                      [100%]\n3 passed in 0.01s\n",
+        "stderr": "",
+        "timed_out": false,
+        "duration_seconds": 0.1917
+      }
+    },
+    {
+      "task_id": "py_test_generation_stats",
+      "suite": "core-python",
+      "agent_id": "fixture-solver",
+      "success": true,
+      "score": 1.0,
+      "category": "test_generation",
+      "difficulty": "easy",
+      "duration_seconds": 0.1945,
+      "edit_count": 1,
+      "notes": "Replaces placeholder assertions with real regression tests.",
+      "validation": {
+        "command": [
+          "pytest",
+          "-q"
+        ],
+        "returncode": 0,
+        "stdout": "...                                                                      [100%]\n3 passed in 0.01s\n",
+        "stderr": "",
+        "timed_out": false,
+        "duration_seconds": 0.1936
+      }
+    },
+    {
+      "task_id": "py_test_generation_tax",
+      "suite": "core-python",
+      "agent_id": "fixture-solver",
+      "success": true,
+      "score": 1.0,
+      "category": "test_generation",
+      "difficulty": "easy",
+      "duration_seconds": 0.1975,
+      "edit_count": 1,
+      "notes": "Adds focused tax helper tests.",
+      "validation": {
+        "command": [
+          "pytest",
+          "-q"
+        ],
+        "returncode": 0,
+        "stdout": "...                                                                      [100%]\n3 passed in 0.01s\n",
+        "stderr": "",
+        "timed_out": false,
+        "duration_seconds": 0.1966
+      }
+    },
+    {
+      "task_id": "py_test_generation_validators",
+      "suite": "core-python",
+      "agent_id": "fixture-solver",
+      "success": true,
+      "score": 1.0,
+      "category": "test_generation",
+      "difficulty": "hard",
+      "duration_seconds": 0.2077,
+      "edit_count": 1,
+      "notes": "Comprehensive tests for all three validators covering valid, invalid, and boundary cases.",
+      "validation": {
+        "command": [
+          "pytest",
+          "-q"
+        ],
+        "returncode": 0,
+        "stdout": "........................                                                 [100%]\n24 passed in 0.02s\n",
+        "stderr": "",
+        "timed_out": false,
+        "duration_seconds": 0.2068
+      }
+    }
+  ]
+}
