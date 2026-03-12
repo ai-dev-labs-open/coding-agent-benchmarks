@@ -46,7 +46,7 @@ def test_eval_command_writes_report(tmp_path: Path) -> None:
     assert completed.returncode == 0
     assert output.exists()
     payload = json.loads(output.read_text(encoding="utf-8"))
-    assert payload["passed_tasks"] == 8
+    assert payload["passed_tasks"] == 12
     assert "by_category" in payload
     assert "by_difficulty" in payload
 

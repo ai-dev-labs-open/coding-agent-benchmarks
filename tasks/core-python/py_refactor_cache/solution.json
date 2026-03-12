@@ -1,0 +1,17 @@
+{
+  "notes": "Introduces cache.py with TtlCache and rewrites both services to use it.",
+  "edits": [
+    {
+      "path": "cache.py",
+      "content": "import time\n\n\nclass TtlCache:\n    \"\"\"Simple in-memory TTL cache.\"\"\"\n\n    def __init__(self, ttl_seconds: float) -> None:\n        self.ttl_seconds = ttl_seconds\n        self._store: dict[str, tuple[object, float]] = {}\n\n    def get(self, key: str) -> object | None:\n        entry = self._store.get(key)\n        if entry is None:\n            return None\n        value, ts = entry\n        if time.monotonic() - ts > self.ttl_seconds:\n            del self._store[key]\n            return None\n        return value\n\n    def set(self, key: str, value: object) -> None:\n        self._store[key] = (value, time.monotonic())\n\n    def delete(self, key: str) -> None:\n        self._store.pop(key, None)\n"
+    },
+    {
+      "path": "user_service.py",
+      "content": "from cache import TtlCache\n\n_user_cache: TtlCache = TtlCache(ttl_seconds=30.0)\n\n\ndef get_user(user_id: str) -> dict | None:\n    cached = _user_cache.get(user_id)\n    if cached is not None:\n        return cached  # type: ignore[return-value]\n    user = {\"id\": user_id, \"name\": f\"User {user_id}\"}\n    _user_cache.set(user_id, user)\n    return user\n\n\ndef invalidate_user(user_id: str) -> None:\n    _user_cache.delete(user_id)\n"
+    },
+    {
+      "path": "product_service.py",
+      "content": "from cache import TtlCache\n\n_product_cache: TtlCache = TtlCache(ttl_seconds=60.0)\n\n\ndef get_product(product_id: str) -> dict | None:\n    cached = _product_cache.get(product_id)\n    if cached is not None:\n        return cached  # type: ignore[return-value]\n    product = {\"id\": product_id, \"name\": f\"Product {product_id}\"}\n    _product_cache.set(product_id, product)\n    return product\n\n\ndef invalidate_product(product_id: str) -> None:\n    _product_cache.delete(product_id)\n"
+    }
+  ]
+}

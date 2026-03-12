@@ -1,0 +1,11 @@
+{
+  "id": "py_refactor_cache",
+  "title": "Extract duplicated TTL cache logic into a shared helper",
+  "category": "refactor",
+  "difficulty": "hard",
+  "instruction": "Both `user_service.py` and `product_service.py` contain an identical `_get_cached` helper that implements a simple TTL cache using a dict and timestamps. Extract this logic into a new file `cache.py` that exposes a `TtlCache` class with `get(key)` and `set(key, value)` methods and a `ttl_seconds` constructor argument. Update both service files to import and use `TtlCache` instead of their local helpers. All existing tests must continue to pass.",
+  "workspace": "workspace",
+  "validation_command": ["pytest", "-q"],
+  "timeout_seconds": 10,
+  "suite": "core-python"
+}

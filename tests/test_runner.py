@@ -52,8 +52,8 @@ def test_suite_report_serialization_contains_results() -> None:
     payload = json.loads(report.to_json())
 
     assert payload["suite"] == "core-python"
-    assert payload["passed_tasks"] == 8
-    assert len(payload["results"]) == 8
+    assert payload["passed_tasks"] == 12
+    assert len(payload["results"]) == 12
     assert "by_category" in payload
     assert "by_difficulty" in payload
 

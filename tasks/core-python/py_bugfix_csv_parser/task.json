@@ -1,0 +1,11 @@
+{
+  "id": "py_bugfix_csv_parser",
+  "title": "Fix CSV row parser to handle quoted fields",
+  "category": "bugfix",
+  "difficulty": "medium",
+  "instruction": "The function `parse_row` in `csv_parser.py` splits on every comma, which breaks when a field contains a comma inside double quotes. Fix it so that commas inside double-quoted fields are treated as part of the field value, not as delimiters. The function should return a list of strings with surrounding double quotes stripped from quoted fields.",
+  "workspace": "workspace",
+  "validation_command": ["pytest", "-q"],
+  "timeout_seconds": 10,
+  "suite": "core-python"
+}

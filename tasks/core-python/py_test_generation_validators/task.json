@@ -1,0 +1,11 @@
+{
+  "id": "py_test_generation_validators",
+  "title": "Write tests for an input validation module",
+  "category": "test_generation",
+  "difficulty": "hard",
+  "instruction": "The file `validators.py` contains three functions: `validate_email`, `validate_age`, and `validate_username`. Each raises `ValueError` with a descriptive message on invalid input and returns the (possibly normalised) value on success. The test file `test_validators.py` is empty. Add comprehensive tests that cover valid inputs, each invalid case described in the docstrings, and edge cases such as boundary values and empty strings. All tests must pass against the provided implementation.",
+  "workspace": "workspace",
+  "validation_command": ["pytest", "-q"],
+  "timeout_seconds": 10,
+  "suite": "core-python"
+}

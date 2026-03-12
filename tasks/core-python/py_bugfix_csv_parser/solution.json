@@ -1,0 +1,9 @@
+{
+  "notes": "Replace naive split with a proper quoted-field-aware parser using the csv module.",
+  "edits": [
+    {
+      "path": "csv_parser.py",
+      "content": "import csv\nimport io\n\n\ndef parse_row(line: str) -> list[str]:\n    \"\"\"Parse a single CSV row and return a list of field strings.\n\n    Quoted fields (surrounded by double quotes) may contain commas.\n    Surrounding quotes are stripped from the returned values.\n    \"\"\"\n    reader = csv.reader(io.StringIO(line))\n    return next(reader)\n"
+    }
+  ]
+}

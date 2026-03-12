@@ -1,0 +1,9 @@
+{
+  "notes": "Adds paginate() to results.py with validation and correct slice logic.",
+  "edits": [
+    {
+      "path": "results.py",
+      "content": "\"\"\"Utilities for working with result sets.\"\"\"\n\nfrom typing import TypeVar\n\nT = TypeVar(\"T\")\n\n\ndef sort_results(items: list[T], key=None, reverse: bool = False) -> list[T]:\n    \"\"\"Return a sorted copy of *items*.\"\"\"\n    return sorted(items, key=key, reverse=reverse)\n\n\ndef paginate(items: list[T], page: int, page_size: int) -> list[T]:\n    \"\"\"Return the slice of *items* for the given 1-based *page*.\n\n    Raises ValueError if *page* < 1 or *page_size* < 1.\n    Returns an empty list if *page* is beyond the last page.\n    \"\"\"\n    if page < 1:\n        raise ValueError(f\"page must be >= 1, got {page}\")\n    if page_size < 1:\n        raise ValueError(f\"page_size must be >= 1, got {page_size}\")\n    start = (page - 1) * page_size\n    return items[start : start + page_size]\n"
+    }
+  ]
+}

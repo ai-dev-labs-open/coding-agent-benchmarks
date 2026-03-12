@@ -1,0 +1,11 @@
+{
+  "id": "py_feature_pagination",
+  "title": "Add paginate helper to a results module",
+  "category": "feature",
+  "difficulty": "medium",
+  "instruction": "Add a function `paginate(items, page, page_size)` to `results.py`. It should return the correct slice of `items` for the given 1-based `page` number and `page_size`. If `page` is less than 1 or `page_size` is less than 1, raise `ValueError`. If `page` is beyond the last page, return an empty list.",
+  "workspace": "workspace",
+  "validation_command": ["pytest", "-q"],
+  "timeout_seconds": 10,
+  "suite": "core-python"
+}

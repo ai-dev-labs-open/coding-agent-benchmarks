@@ -11,7 +11,7 @@ def test_list_tasks_returns_all_core_python_tasks() -> None:
 
     tasks = repository.list_tasks()
 
-    assert len(tasks) == 8
+    assert len(tasks) == 12
     assert {task.suite for task in tasks} == {"core-python"}
 
 
